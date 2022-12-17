@@ -1,0 +1,351 @@
+/*
+    micro-MVC
+
+    File name: main.css
+    Description: This file contains the main CSS.
+
+    Coded by George Delaportas (ViR4X)
+    Copyright (C) 2015
+*/
+
+body
+{
+    font: 15px Verdana;
+    background: #071719;
+    cursor: default;
+    margin: 10px;
+    padding: 0px;
+    user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+a
+{
+    color: #878787;
+    font-weight: normal;
+}
+
+#main
+{
+    text-align: justify;
+    height: 100%;
+    min-width: 432px;
+    max-width: 940px;
+    margin: auto;
+    padding: 4px;
+}
+
+#footer
+{
+    font-size: 12px;
+    text-align: right;
+    color: #878787;
+    border-top: solid 1px #D4D4D4;
+    margin-top: 70px;
+    margin-bottom: 15px;
+    padding-top: 10px;
+}
+
+#languages
+{
+    float: right;
+    clear: both;
+    color: #424242;
+}
+
+#languages a
+{
+    color: #878787;
+    text-decoration: none;
+    transition: all .25s ease-in-out;
+    -moz-transition: all .25s ease-in-out;
+    -webkit-transition: all .25s ease-in-out;
+}
+
+#languages a:hover
+{
+    color: #F7F7F7;
+    transition: all .25s ease-in-out;
+    -moz-transition: all .25s ease-in-out;
+    -webkit-transition: all .25s ease-in-out;
+}
+
+#err_404
+{
+    min-height: 509px;
+}
+
+.logo
+{
+    width: 30%;
+    margin-bottom: 10px;
+}
+
+.logo img
+{
+    width: 100%;
+    height: auto;
+    margin-top: 30px;
+}
+
+.motto
+{
+    font-weight: bold;
+    font-style: italic;
+    text-align: center;
+    font-size: 11px;
+    color: #A7A7A7;
+    width: 30%;
+}
+
+.mt_large
+{
+    font-size: 13px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.active_language
+{
+    color: #78D7AE !important;
+}
+
+.menu
+{
+    padding-bottom: 30px;
+}
+
+.login_register
+{
+    float: left;
+}
+
+.login_register a
+{
+    color: #78D7AE;
+}
+
+.dashboard_logout
+{
+    float: left;
+}
+
+.dashboard_logout a
+{
+    color: #78D7AE;
+}
+
+.guest
+{
+    float: right;
+}
+
+.page
+{
+    min-height: 330px;
+    margin-top: 50px;
+}
+
+.content
+{
+    clear: both;
+    color: #424242;
+    background-color: #FCFCFC;
+    border: solid 1px #E6E6E6;
+    border-radius: 4px;
+    min-height: 332px;
+    padding: 10px;
+}
+
+.controls
+{
+    text-align: center;
+    margin-top: 20px;
+    min-height: 18px;
+}
+
+.controls a
+{
+    transition: background .25s ease-in-out;
+    -moz-transition: background .25s ease-in-out;
+    -webkit-transition: background .25s ease-in-out;
+}
+
+.controls a:hover
+{
+    background-color: #F7F7F7;
+    transition: background .25s ease-in-out;
+    -moz-transition: background .25s ease-in-out;
+    -webkit-transition: background .25s ease-in-out;
+}
+
+.controls .button
+{
+    transition: background .25s ease-in-out;
+    -moz-transition: background .25s ease-in-out;
+    -webkit-transition: background .25s ease-in-out;
+}
+
+.controls .button:hover
+{
+    background-color: #F7F7F7;
+    transition: background .25s ease-in-out;
+    -moz-transition: background .25s ease-in-out;
+    -webkit-transition: background .25s ease-in-out;
+}
+
+.control_item
+{
+    clear: both;
+    margin-bottom: 10px;
+}
+
+.button
+{
+    font-size: 14px;
+    color: #424242;
+    background-color: #E7E7E7;
+    text-decoration: none;
+    border: solid 1px #78D7AE;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 6px;
+}
+
+.text
+{
+    font-size: 14px;
+    color: #424242;
+    background-color: #F7F7F7;
+    border: solid 1px #78D7AE;
+    border-radius: 4px;
+    width: 186px;
+    padding: 6px;
+}
+
+.txt_big
+{
+    width: 220px;
+}
+
+.menu_links
+{
+    transition: all .25s ease-in-out;
+    -moz-transition: all .25s ease-in-out;
+    -webkit-transition: all .25s ease-in-out;
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+.menu_links:hover
+{
+    color: #F7F7F7;
+    transition: all .25s ease-in-out;
+    -moz-transition: all .25s ease-in-out;
+    -webkit-transition: all .25s ease-in-out;
+}
+
+.ml_last
+{
+    margin-right: 0px;
+}
+
+.ml_highlight
+{
+    color: #F7F7F7 !important;
+}
+
+.ml_exit
+{
+    color: #EF638F !important;
+}
+
+.ml_exit:hover
+{
+    color: #F7F7F7 !important;
+}
+
+.inactive
+{
+    background-color: #C8C8C8;
+    cursor: not-allowed;
+}
+
+.error
+{
+    background-color: #FFD1D1;
+    color: #B94D6F;
+    font-weight: bold;
+    text-align: center;
+    height: auto;
+    min-height: auto;
+    padding: 100px;
+}
+
+.note
+{
+    color: #403516;
+    background-color: #FFFF6A;
+    border: 1px grey solid;
+    border-radius: 4px;
+    margin: 12px auto auto auto;
+    padding: 10px;
+    visibility: hidden;
+}
+
+.footer_framework
+{
+    float: left;
+}
+
+.footer_framework a
+{
+    color: #FFB221;
+}
+
+.footer_copyright
+{
+    float: right;
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 720px) and (orientation: portrait)
+{
+    body
+    {
+        font-size: 36px;
+        margin-top: 70px;
+    }
+
+    #main
+    {
+        max-width: 100%;
+    }
+
+    .controls
+    {
+        text-align: center;
+        margin-top: 40px;
+        min-height: 72px;
+    }
+
+    .button
+    {
+        font-size: 35px;
+        padding: 12px;
+    }
+
+    .text
+    {
+        font-size: 24px;
+        width: 316px;
+        padding: 20px;
+    }
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 720px) and (orientation: landscape)
+{
+
+}

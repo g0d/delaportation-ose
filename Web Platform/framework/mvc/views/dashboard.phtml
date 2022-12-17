@@ -1,0 +1,28 @@
+<?
+    UTIL::Load_Extension('vulcan', 'js');
+    UTIL::Load_Extension('ultron', 'js');
+?>
+            <div id="dashboard" class="page">
+                <?UTIL::Load_Section('menu');?>
+                <div class="content">
+                    <?
+                        UTIL::Load_Section('content_head');
+                        UTIL::Load_Content('content_dashboard', 'dynamic');
+                    ?>
+                    <div class="controls">
+                        <br>
+                        <div class="control_item">
+                            <a id="dashboard_button" class="button" href="/<?=LANG::Get('this');?>/download/">
+                                <?=UTIL::Load_Content('text_button_download', 'static');?>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+<script>
+    ultron(function(event)
+           {
+                
+           });
+</script>

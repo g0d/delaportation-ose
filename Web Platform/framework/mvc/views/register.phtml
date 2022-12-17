@@ -1,0 +1,117 @@
+<?
+    UTIL::Load_Extension('splash', 'php');
+    UTIL::Load_Extension('quicky', 'php');
+    UTIL::Load_Extension('woody', 'php');
+    UTIL::Load_Extension('vulcan', 'js');
+    UTIL::Load_Extension('content_fetcher', 'js');
+    UTIL::Load_Extension('ultron', 'js');
+    
+    $error = null;
+
+    if (!empty($_POST))
+    {
+        $email_password = QUICKY::Register($_POST['email']);
+
+        if (!$email_password)
+            $error = true;
+        else
+        {
+            $email_hello = UTIL::Load_Content('text_email_hello', 'static');
+            $email_info = UTIL::Load_Content('text_email_info', 'static');
+            $email_thanks = UTIL::Load_Content('text_email_thanks', 'static');
+
+            $searches = array('{email_hello}', '{email_info}', '{email_password}', '{email_thanks}');
+            $replaces = array($email_hello, $email_info, $email_password, $email_thanks);
+            
+            $arguments = array($searches, $replaces);
+            $message = UTIL::Fetch_Template('registration_email', $arguments);
+
+            if (!$message)
+                $error = true;
+            else
+            {
+                $subject = UTIL::Load_Content('text_email_subject', 'static');
+                $result = WOODY::Send_Mail('hello@delaportation.com', $_POST['email'], $subject, $message);
+                
+                if (!$result)
+                    $error = true;
+                else
+                    $error = false;
+            }
+        }
+    }
+?>
+            <div id="register" class="page">
+                <?UTIL::Load_Section('menu');?>
+                <div class="content">
+                    <?
+                        UTIL::Load_Section('content_head');
+
+                        if ($error === null)
+                        {
+                            UTIL::Load_Content('content_register', 'dynamic');
+                    ?>
+                    <br><br>
+                    <div class="controls">
+                        <?
+                            $splash = new SPLASH();
+                            
+                            echo '<form id="reg_form" action="" method="post">';
+                            echo '<div class="control_item">';
+                            echo $splash->Input('create', array('id'            =>  'email',
+                                                                'placeholder'   =>  UTIL::Load_Content('text_enter_email', 'static'),
+                                                                'type'          =>  'text',
+                                                                'name'          =>  'email',
+                                                                'class'         =>  'text txt_big'));
+                            echo '</div><br>';
+                            echo '<div class="control_item">';
+                            echo $splash->Button('create', array('value'    =>  UTIL::Load_Content('menu_register', 'static'),
+                                                                 'type'     =>  'submit',
+                                                                 'class'    =>  'button'));
+                            echo '</div>';
+                            echo '</form>';
+                        ?>
+                        <div id="error" class="note">
+                        </div>
+                    </div>
+                    <?
+                        }
+                        else
+                        {
+                            if ($error === true)
+                                UTIL::Load_Content('content_registration_error', 'dynamic');
+                            else
+                                UTIL::Load_Content('content_registration_success', 'dynamic');
+                        }
+                    ?>
+                </div>
+            </div>
+
+<script>
+    ultron(function(event)
+           {
+                var dom = new vulcan();
+                //var ajax = new bull();
+                var reg_form = dom.objects.by_id('reg_form');
+
+                if (reg_form)
+                    reg_form.onsubmit = function() { return validate_fields(); };
+
+                function validate_fields()
+                {
+                    var email_input = dom.objects.by_id('email');
+
+                    if (email_input.value.length < 8)
+                    {
+                        var error_area = dom.objects.by_id('error');
+
+                        error_area.innerHTML = '<?=UTIL::Load_Content('text_invalid_email', 'static');?>';
+                        error.style.visibility = 'visible';
+
+                        return false;
+                    }
+                    
+                    return true;
+                }
+           });
+</script>

@@ -1,0 +1,28 @@
+<?
+    UTIL::Load_Extension('vulcan', 'js');
+    UTIL::Load_Extension('ultron', 'js');
+?>
+            <div id="root" class="page">
+                <?UTIL::Load_Section('menu');?>
+                <div class="content">
+                    <?
+                        UTIL::Load_Section('content_head');
+                        UTIL::Load_Content('content_root', 'dynamic');
+                    ?>
+                    <div class="controls">
+                        <br>
+                        <div class="control_item">
+                            <a id="index_button" class="button" href="download/">
+                                <?=UTIL::Load_Content('text_button_download', 'static');?>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+<script>
+    ultron(function(event)
+           {
+                
+           });
+</script>

@@ -1,0 +1,27 @@
+<?
+    UTIL::Load_Extension('splash', 'php');
+    UTIL::Load_Extension('quicky', 'php');
+    UTIL::Load_Extension('vulcan', 'js');
+    UTIL::Load_Extension('content_fetcher', 'js');
+    UTIL::Load_Extension('ultron', 'js');
+    
+    $error = null;
+    
+    QUICKY::Logout();
+?>
+            <div id="logout" class="page">
+                <?UTIL::Load_Section('menu');?>
+                <div class="content">
+                    <?
+                        UTIL::Load_Section('content_head');
+                        UTIL::Load_Content('content_logout', 'dynamic');
+                    ?>
+                    <br><br>
+            </div>
+
+<script>
+    ultron(function(event)
+           {
+               
+           });
+</script>

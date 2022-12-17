@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="icon" type="image/png" href="/site/pix/icon.png">
+        <link rel="stylesheet" href="/site/main.css">
+        <title><?=UTIL::Load_Content('text_title', 'static');?></title>
+    </head>
+    <body>
+        <div id="main">
+        <?
+            UTIL::Load_Section('header');
+            
+            $this_route = MVC::Get_Route('this');
+            
+            if ($this_route === false)
+                require('framework/errors/404.phtml');
+            else
+            {
+                if ($this_route === 'root')
+                    MVC::Go_To($this_route);
+                else
+                {
+                    $args = '';
+                    
+                    MVC::Go_To($this_route, $args);
+                }
+            }
+
+            unset($this_route);
+
+            UTIL::Load_Section('footer');
+        ?>
+        </div>
+    </body>
+</html>

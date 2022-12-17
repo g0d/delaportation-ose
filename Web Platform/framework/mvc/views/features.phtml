@@ -1,0 +1,51 @@
+<?
+    UTIL::Load_Extension('splash', 'php');
+    UTIL::Load_Extension('vulcan', 'js');
+    UTIL::Load_Extension('content_fetcher', 'js');
+    UTIL::Load_Extension('ultron', 'js');
+?>
+            <div id="features" class="page">
+                <?UTIL::Load_Section('menu');?>
+                <div class="content">
+                    <?
+                        UTIL::Load_Section('content_head');
+                        UTIL::Load_Content('content_features', 'dynamic');
+
+                        echo '<br><br>';
+                        echo MVC::Restore_Content('features');
+                    ?>
+                    <div class="controls">
+                        <?
+                            $splash = new SPLASH();
+
+                            $this_lang = LANG::Get('this');
+
+                            echo '<div class="control_item">';
+                            echo $splash->Link('create', 'Back to main page', array('href'   =>  '/' . $this_lang . '/',
+                                                                                    'class'  =>  'button'));
+                            echo '</div>';
+                        ?>
+                        <br>
+                        <div id="results" class="note">
+                            <?
+                                $searches = array('{message}');
+                                $replaces = array('...');
+                                $arguments = array($searches, $replaces);
+                                $info_template = UTIL::Fetch_Template('info', $arguments);
+
+                                echo $info_template;
+                            ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+<script>
+    ultron(function(event)
+           {
+                var dom = new vulcan();
+                var ajax = new bull();
+
+                ajax.data('/framework/mvc/views/assets/misc/features.php', 'features', 'results', false);
+           });
+</script>

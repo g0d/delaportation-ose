@@ -1,0 +1,17 @@
+            <div id="footer">
+                <div class="footer_framework">
+                    <a href="https://github.com/g0d/micro-MVC" target="_blank">micro-MVC</a>
+                </div>
+            	<div class="footer_copyright">
+                    <?
+                        $author = UTIL::Load_Content('text_author', 'static');
+
+                        $searches = array('{author}');
+                        $replaces = array($author);
+                        $arguments = array($searches, $replaces);
+                        $copyright_template = UTIL::Fetch_Template('copyright', $arguments);
+
+                        echo $copyright_template;
+                    ?>
+                </div>
+            </div>

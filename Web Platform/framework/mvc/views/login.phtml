@@ -1,0 +1,95 @@
+<?
+    UTIL::Load_Extension('splash', 'php');
+    UTIL::Load_Extension('quicky', 'php');
+    UTIL::Load_Extension('vulcan', 'js');
+    UTIL::Load_Extension('content_fetcher', 'js');
+    UTIL::Load_Extension('ultron', 'js');
+    
+    $error = null;
+    
+    if (!empty($_POST))
+    {
+        $email = QUICKY::Login($_POST['password']);
+
+        if (!$email)
+            $error = true;
+        else
+        {
+            $this_lang = LANG::Get('this');
+            
+            header('Location: /' . $this_lang . '/dashboard/');
+        }
+    }
+?>
+            <div id="login" class="page">
+                <?UTIL::Load_Section('menu');?>
+                <div class="content">
+                    <?
+                        UTIL::Load_Section('content_head');
+
+                        if ($error === null)
+                        {
+                            UTIL::Load_Content('content_login', 'dynamic');
+                    ?>
+                    <br><br>
+                    <div class="controls">
+                        <?
+                            $splash = new SPLASH();
+                            
+                            echo '<form id="login_form" action="" method="post">';
+                            echo '<div class="control_item">';
+                            echo $splash->Input('create', array('id'            =>  'password',
+                                                                'placeholder'   =>  UTIL::Load_Content('text_enter_password', 'static'),
+                                                                'type'          =>  'password',
+                                                                'name'          =>  'password',
+                                                                'class'         =>  'text txt_big'));
+                            echo '</div><br>';
+                            echo '<div class="control_item">';
+                            echo $splash->Button('create', array('value'    =>  UTIL::Load_Content('menu_login', 'static'),
+                                                                 'type'     =>  'submit',
+                                                                 'class'    =>  'button'));
+                            echo '</div>';
+                            echo '</form>';
+                        ?>
+                        <div id="error" class="note">
+                        </div>
+                    </div>
+                    <?
+                        }
+                        else
+                        {
+                            if ($error === true)
+                                UTIL::Load_Content('content_login_error', 'dynamic');
+                        }
+                    ?>
+                </div>
+            </div>
+
+<script>
+    ultron(function(event)
+           {
+                var dom = new vulcan();
+                //var ajax = new bull();
+                var login_form = dom.objects.by_id('login_form');
+
+                if (login_form)
+                    login_form.onsubmit = function() { return validate_fields(); };
+
+                function validate_fields()
+                {
+                    var password_input = dom.objects.by_id('password');
+
+                    if (password_input.value.length < 40)
+                    {
+                        var error_area = dom.objects.by_id('error');
+
+                        error_area.innerHTML = '<?=UTIL::Load_Content('text_invalid_password', 'static');?>';
+                        error.style.visibility = 'visible';
+
+                        return false;
+                    }
+                    
+                    return true;
+                }
+           });
+</script>

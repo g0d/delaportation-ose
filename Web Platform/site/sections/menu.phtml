@@ -1,0 +1,66 @@
+<?
+    UTIL::Load_Extension('splash', 'php');
+    UTIL::Load_Extension('quicky', 'php');
+
+    function highlight_current_link($route)
+    {
+        $this_route = UTIL::Denormalize_Route(MVC::Get_Route('this'));
+
+        if ($this_route === $route)
+            return ' ml_highlight';
+    }
+
+    $splash = new SPLASH();
+
+    $this_lang = LANG::Get('this');
+?>
+<div class="menu">
+    <?
+        if (QUICKY::User_Logged_In())
+        {
+    ?>
+    <div class="dashboard_logout">
+    <?
+            echo $splash->Link('create', UTIL::Load_Content('menu_dashboard', 'static'), 
+                                         array('href'   =>  '/' . $this_lang . '/dashboard/',
+                                               'class'  =>  'menu_links' . highlight_current_link('dashboard')));
+            echo $splash->Link('create', UTIL::Load_Content('menu_logout', 'static'), 
+                                         array('href'   =>  '/' . $this_lang . '/logout/',
+                                               'class'  =>  'menu_links ml_exit' . highlight_current_link('logout')));
+    ?>
+    </div>
+    <?
+        }
+        else
+        {
+    ?>
+    <div class="login_register">
+    <?
+            echo $splash->Link('create', UTIL::Load_Content('menu_login', 'static'), 
+                                         array('href'   =>  '/' . $this_lang . '/login/',
+                                               'class'  =>  'menu_links' . highlight_current_link('login')));
+            echo $splash->Link('create', UTIL::Load_Content('menu_register', 'static'), 
+                                         array('href'   =>  '/' . $this_lang . '/register/',
+                                               'class'  =>  'menu_links' . highlight_current_link('register')));
+    ?>
+    </div>
+    <?
+        }
+    ?>
+    <div class="guest">
+        <?
+            echo $splash->Link('create', UTIL::Load_Content('menu_home', 'static'), 
+                                         array('href'   =>  '/' . $this_lang . '/',
+                                               'class'  =>  'menu_links' . highlight_current_link('root')));
+            echo $splash->Link('create', UTIL::Load_Content('menu_features', 'static'), 
+                                         array('href'   =>  '/' . $this_lang . '/features/',
+                                               'class'  =>  'menu_links' . highlight_current_link('features')));
+            echo $splash->Link('create', UTIL::Load_Content('menu_download', 'static'), 
+                                         array('href'   =>  '/' . $this_lang . '/download/',
+                                               'class'  =>  'menu_links' . highlight_current_link('download')));
+            echo $splash->Link('create', UTIL::Load_Content('menu_about', 'static'), 
+                                         array('href'   =>  '/' . $this_lang . '/about/',
+                                               'class'  =>  'menu_links ml_last' . highlight_current_link('about')));
+        ?>
+    </div>
+</div>
