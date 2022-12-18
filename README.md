@@ -5,6 +5,6 @@ DELAPORTATION is an all-in-one solution that enables you to upload, donwload and
 to copy files from your computer and paste them into another one.
 
 George Delaportas (G0D)  
-Copyright (C) 2017 - 2022 micro-MVC  
+Copyright (C) 2017 - 2022 DELAPORTATION  
 Open Software License (OSL 3.0)  
 Supported by [PROBOTEK](https://probotek.eu/)  
